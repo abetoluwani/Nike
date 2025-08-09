@@ -1,5 +1,4 @@
-import type { Product } from "@/data/products";
-
+ 
 import React, { useState } from "react";
 import { Button } from "@heroui/button";
 import {
@@ -18,6 +17,8 @@ import {
   HeartIcon as HeartIconSolid,
   SparklesIcon,
 } from "@heroicons/react/24/solid";
+
+import { Product } from "@/data/products";
 
 interface ProductCardProps {
   onAddToCart?: (
@@ -222,7 +223,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
                   aria-label="Size selection"
                   onAction={(key) => setSelectedSize(key as string)}
                 >
-                  {product.variants.size.map((size) => (
+                  {product.variants.size.map((size: string) => (
                     <DropdownItem key={size}>{size}</DropdownItem>
                   ))}
                 </DropdownMenu>
@@ -251,7 +252,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
                   aria-label="Color selection"
                   onAction={(key) => setSelectedColor(key as string)}
                 >
-                  {product.variants.color.map((color) => (
+                  {product.variants.color.map((color: string) => (
                     <DropdownItem key={color}>{color}</DropdownItem>
                   ))}
                 </DropdownMenu>

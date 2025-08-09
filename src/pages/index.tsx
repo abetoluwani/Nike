@@ -2,15 +2,34 @@ import { Button } from "@heroui/button";
 import { Link } from "@heroui/link";
 import { Snippet } from "@heroui/snippet";
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 
 import DefaultLayout from "@/layouts/default";
 import { ProductCard } from "@/components/product-card";
-import { products } from "@/data/products";
 import { subtitle, title } from "@/components/primitives";
 import { useCart } from "@/context/cart";
+import { products, Product } from "@/data/products";
 
 export default function IndexPage() {
   const { addItem } = useCart();
+  const [featuredProducts, setFeaturedProducts] = useState<Product[]>([]);
+
+  useEffect(() => {
+    const getFeaturedProducts = () => {
+      // Filter for featured products
+      const featured = products.filter((product) => product.featured);
+
+      // If we have more than 10 featured products, take 10
+      // Otherwise take all featured products
+      if (featured.length > 8) {
+        return featured.slice(0, 8);
+      }
+
+      return featured;
+    };
+
+    setFeaturedProducts(getFeaturedProducts());
+  }, []);
 
   return (
     <DefaultLayout>
@@ -23,8 +42,8 @@ export default function IndexPage() {
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
           <h1 className="text-balance">
-            <span className={title()}>Nike&nbsp;</span>
-            <span className={title({ color: "violet" })}>Sneakers&nbsp;</span>
+            <span className={title()}>Sneakers&nbsp;</span>
+            <span className={title({ color: "violet" })}>Collection&nbsp;</span>
             <br />
             <span className={title()}>Built for speed and style.</span>
           </h1>
@@ -50,12 +69,12 @@ export default function IndexPage() {
       {/* Products */}
       <section className="py-6 md:py-10" id="products">
         <div className="mb-6 flex items-end justify-between">
-          <h2 className="text-2xl font-bold">Featured Products</h2>
-          <Link href="#">See all</Link>
+          <h2 className="text-2xl font-bold">Featured Collection</h2>
+          <Link href="/products">See all products</Link>
         </div>
 
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {products.map((p) => (
+          {featuredProducts.map((p) => (
             <ProductCard
               key={p.id}
               product={p}
@@ -66,10 +85,6 @@ export default function IndexPage() {
               }}
             />
           ))}
-        </div>
-
-        <div className="mt-8 text-center">
-          <Snippet hideCopyButton hideSymbol variant="bordered" />
         </div>
       </section>
     </DefaultLayout>
