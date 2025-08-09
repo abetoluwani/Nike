@@ -1,6 +1,5 @@
 import { Button } from "@heroui/button";
 import { Link } from "@heroui/link";
-import { Snippet } from "@heroui/snippet";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 
@@ -19,8 +18,6 @@ export default function IndexPage() {
       // Filter for featured products
       const featured = products.filter((product) => product.featured);
 
-      // If we have more than 10 featured products, take 10
-      // Otherwise take all featured products
       if (featured.length > 8) {
         return featured.slice(0, 8);
       }

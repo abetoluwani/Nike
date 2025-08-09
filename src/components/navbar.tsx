@@ -18,7 +18,52 @@ import { siteConfig } from "@/config/site";
 import { useCart } from "@/context/cart";
 
 export const Navbar = () => {
-  const { count } = useCart();
+  const { count, items, subtotal } = useCart();
+  const cartPreview = (
+    <div className="absolute right-0 mt-2 w-80 bg-white shadow-lg rounded-lg z-50 p-4 border">
+      <h3 className="font-bold mb-2">Cart</h3>
+      {items.length === 0 ? (
+        <div className="text-default-500 text-sm">Your cart is empty.</div>
+      ) : (
+        <div>
+          {items.slice(0, 3).map((item) => (
+            <div key={item.id} className="flex items-center gap-2 mb-2">
+              <img
+                alt={item.name}
+                className="w-10 h-10 object-cover rounded"
+                src={item.image}
+              />
+              <div className="flex-1">
+                <div className="font-medium text-sm">{item.name}</div>
+                <div className="text-xs text-default-500">
+                  Qty: {item.quantity}
+                </div>
+              </div>
+              <div className="text-xs font-bold">
+                ${item.price * item.quantity}
+              </div>
+            </div>
+          ))}
+          {items.length > 3 && (
+            <div className="text-xs text-default-400">
+              ...and {items.length - 3} more
+            </div>
+          )}
+          <div className="mt-2 text-right text-sm font-bold">
+            Subtotal: ${subtotal}
+          </div>
+        </div>
+      )}
+      <div className="mt-4 text-right">
+        <a
+          className="text-primary-600 hover:underline font-medium"
+          href="/cart"
+        >
+          Go to Cart
+        </a>
+      </div>
+    </div>
+  );
   // search removed per request
 
   return (
@@ -60,22 +105,25 @@ export const Navbar = () => {
           <ThemeSwitch />
         </NavbarItem>
         <NavbarItem className="hidden md:flex">
-          <Button
-            isIconOnly
-            aria-label="Cart"
-            as={Link}
-            href="/products"
-            variant="flat"
-          >
-            <div className="relative">
-              <ShoppingCartIcon className="h-5 w-5" />
-              {count > 0 && (
-                <span className="absolute -right-2 -top-2 inline-flex h-4 min-w-[1rem] items-center justify-center rounded-full bg-primary-500 px-1 text-[10px] font-bold text-white">
-                  {count}
-                </span>
-              )}
-            </div>
-          </Button>
+          <div className="relative group">
+            <Button
+              isIconOnly
+              aria-label="Cart"
+              as={Link}
+              href="/cart"
+              variant="flat"
+            >
+              <div className="relative">
+                <ShoppingCartIcon className="h-5 w-5" />
+                {count > 0 && (
+                  <span className="absolute -right-2 -top-2 inline-flex h-4 min-w-[1rem] items-center justify-center rounded-full bg-primary-500 px-1 text-[10px] font-bold text-white">
+                    {count}
+                  </span>
+                )}
+              </div>
+            </Button>
+            <div className="hidden group-hover:block">{cartPreview}</div>
+          </div>
         </NavbarItem>
       </NavbarContent>
 
