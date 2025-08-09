@@ -20,7 +20,7 @@ export default function CartPage() {
         <h1 className="text-3xl font-bold mb-6">Shopping Bag</h1>
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Cart Items Table */}
-          <div className="flex-1 bg-white rounded-xl shadow-md p-6">
+          <div className="flex-1  rounded-xl shadow-md p-6">
             <div className="mb-4 text-sm text-default-500">
               <span className="font-bold">{items.length}</span> item
               {items.length !== 1 ? "s" : ""} in your bag.
