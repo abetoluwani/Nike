@@ -8,11 +8,13 @@ import DefaultLayout from "@/layouts/default";
 import { useCart } from "@/context/cart";
 
 export default function CartPage() {
-  const { items, subtotal, removeItem, clear } = useCart();
-  // For demo, discount is hardcoded
+  const { items, subtotal, removeItem, clear, updateQuantity } = useCart();
   const discount = 4.0;
-  // Quantity change logic not implemented yet
-  const handleQuantityChange = () => {};
+
+  const handleQuantityChange = (id: string, newQuantity: number) => {
+    if (newQuantity < 1) return;
+    updateQuantity(id, newQuantity);
+  };
 
   return (
     <DefaultLayout>

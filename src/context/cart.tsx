@@ -27,6 +27,7 @@ type CartContextType = {
     product: Product,
     opts?: { size?: string; color?: string; quantity?: number },
   ) => void;
+  updateQuantity: (id: string, quantity: number) => void;
   removeItem: (id: string) => void;
   clear: () => void;
 };
@@ -74,7 +75,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
           productId: product.id,
           name: product.name,
           price: product.price,
-          image: product.image,
+          image: product.image || "", // Ensure we have a fallback empty string
           quantity,
           size,
           color,
@@ -85,6 +86,14 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
   const removeItem = (id: string) =>
     setItems((prev) => prev.filter((i) => i.id !== id));
+
+  const updateQuantity = (id: string, quantity: number) => {
+    if (quantity < 1) return;
+
+    setItems((prev) =>
+      prev.map((item) => (item.id === id ? { ...item, quantity } : item)),
+    );
+  };
 
   const clear = () => setItems([]);
 
@@ -100,6 +109,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     count,
     subtotal,
     addItem,
+    updateQuantity,
     removeItem,
     clear,
   };
