@@ -29,7 +29,7 @@ export function useCountries() {
       });
   }, []);
 
-  return countries;
+  return { countries, loading, error };
 }
 
 export function useStates(countryCode: string) {

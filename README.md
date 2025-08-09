@@ -1,8 +1,4 @@
-# Vite & HeroUI Template
-
-This is a template for creating applications using Vite and HeroUI (v2).
-
-[Try it on CodeSandbox](https://githubbox.com/frontio-ai/vite-template)
+# Snickers Collections
 
 ## Technologies Used
 
@@ -18,7 +14,7 @@ This is a template for creating applications using Vite and HeroUI (v2).
 To clone the project, run the following command:
 
 ```bash
-git clone https://github.com/frontio-ai/vite-template.git
+git clone https://github.com/abetoluwani/Sneakers-Collection.git
 ```
 
 ### Install dependencies
@@ -45,7 +41,15 @@ public-hoist-pattern[]=*@heroui/*
 
 After modifying the `.npmrc` file, you need to run `pnpm install` again to ensure that the dependencies are installed correctly.
 
-## License
+## Working Demo
 
-Licensed under the [MIT license](https://github.com/frontio-ai/vite-template/blob/main/LICENSE).
-# Nike
+[Live Demo on Vercel](sneakers-collections.vercel.app)
+*(Replace with your actual deployed link)*
+
+## Layout Approach
+
+The layout uses a responsive grid and flexbox via Tailwind CSS, ensuring the cart and product pages adapt smoothly to both mobile and desktop screens. Components are modular, with clear separation for navigation, cart, and shipping forms.
+
+## Responsiveness Considerations
+
+Mobile-first design is prioritized, with breakpoints for grid and flex layouts to maintain usability and visual appeal across devices. Scrollable containers and adaptive spacing prevent overflow and maintain accessibility.

@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import { useCountries, useStates } from "./api-country-state";
 export function CartShipping() {
-  const countries = useCountries();
+  const { countries, loading, error: countryError } = useCountries();
   const [selectedCountry, setSelectedCountry] = useState("");
   const states = useStates(selectedCountry);
   const [selectedState, setSelectedState] = useState("");
@@ -38,21 +38,27 @@ export function CartShipping() {
     <div className="bg-default-50 rounded-lg p-6 shadow-md mb-6">
       <h3 className="font-bold mb-4 text-lg">Calculated Shipping</h3>
       <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
-        <select
-          className="border rounded px-3 py-2 text-sm"
-          value={selectedCountry}
-          onChange={(e) => {
-            setSelectedCountry(e.target.value);
-            setSelectedState("");
-          }}
-        >
-          <option value="">Select Country</option>
-          {countries.map((c) => (
-            <option key={c.code} value={c.code}>
-              {c.name}
-            </option>
-          ))}
-        </select>
+        {loading ? (
+          <div className="text-gray-500 text-sm">Loading countries...</div>
+        ) : countryError ? (
+          <div className="text-red-500 text-sm">{countryError}</div>
+        ) : (
+          <select
+            className="border rounded px-3 py-2 text-sm"
+            value={selectedCountry}
+            onChange={(e) => {
+              setSelectedCountry(e.target.value);
+              setSelectedState("");
+            }}
+          >
+            <option value="">Select Country</option>
+            {countries.map((c) => (
+              <option key={c.code} value={c.code}>
+                {c.name}
+              </option>
+            ))}
+          </select>
+        )}
         <select
           className="border rounded px-3 py-2 text-sm"
           disabled={!selectedCountry || states.length === 0}
