@@ -1,5 +1,3 @@
-import type React from "react";
-
 import { Button } from "@heroui/button";
 
 type CartSummaryProps = {
