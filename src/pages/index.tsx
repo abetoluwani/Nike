@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 import DefaultLayout from "@/layouts/default";
 import { ProductCard } from "@/components/product-card";
-import { nikeProducts } from "@/data/products";
+import { products } from "@/data/products";
 import { subtitle, title } from "@/components/primitives";
 import { useCart } from "@/context/cart";
 
@@ -50,17 +50,17 @@ export default function IndexPage() {
       {/* Products */}
       <section className="py-6 md:py-10" id="products">
         <div className="mb-6 flex items-end justify-between">
-          <h2 className="text-2xl font-bold">Featured Nike Products</h2>
+          <h2 className="text-2xl font-bold">Featured Products</h2>
           <Link href="#">See all</Link>
         </div>
 
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {nikeProducts.map((p) => (
+          {products.map((p) => (
             <ProductCard
               key={p.id}
               product={p}
               onAddToCart={(id, variant) => {
-                const product = nikeProducts.find((x) => x.id === id)!;
+                const product = products.find((x) => x.id === id)!;
 
                 addItem(product, variant);
               }}

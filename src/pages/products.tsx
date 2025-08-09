@@ -1,6 +1,6 @@
 import DefaultLayout from "@/layouts/default";
 import { ProductCard } from "@/components/product-card";
-import { nikeProducts } from "@/data/products";
+import { products } from "@/data/products";
 import { useCart } from "@/context/cart";
 
 export default function ProductsPage() {
@@ -14,12 +14,12 @@ export default function ProductsPage() {
         </div>
 
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {nikeProducts.map((p) => (
+          {products.map((p) => (
             <ProductCard
               key={p.id}
               product={p}
               onAddToCart={(id, variant) => {
-                const product = nikeProducts.find((x) => x.id === id)!;
+                const product = products.find((x) => x.id === id)!;
 
                 addItem(product, variant);
               }}
