@@ -34,7 +34,7 @@ export default function IndexPage() {
         </motion.div>
 
         <div className="flex gap-4">
-          <Button color="primary" radius="full" variant="shadow">
+          <Button color="primary" radius="full" variant="shadow" as={Link} href="/products">
             Shop Now
           </Button>
          
