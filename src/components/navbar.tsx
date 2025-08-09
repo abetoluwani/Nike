@@ -83,6 +83,24 @@ export const Navbar = () => {
       </NavbarContent>
 
       <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
+        <NavbarItem>
+          <Button
+            isIconOnly
+            aria-label="Cart"
+            as={Link}
+            href="/cart"
+            variant="flat"
+          >
+            <div className="relative">
+              <ShoppingCartIcon className="h-5 w-5" />
+              {count > 0 && (
+                <span className="absolute -right-2 -top-2 inline-flex h-4 min-w-[1rem] items-center justify-center rounded-full bg-primary-500 px-1 text-[10px] font-bold text-white">
+                  {count}
+                </span>
+              )}
+            </div>
+          </Button>
+        </NavbarItem>
         <ThemeSwitch />
         <NavbarMenuToggle />
       </NavbarContent>
