@@ -39,21 +39,21 @@ export default function CartPage() {
             ) : (
               <div>
                 <div className="w-full overflow-x-auto">
-                  <div className="block sm:hidden min-w-[400px] pb-2 border-b font-bold text-default-600 text-xs">
-                    <div className="flex justify-between">
-                      <span>Product</span>
-                      <span>Price</span>
+                  <div>
+                    <div className="hidden sm:grid grid-cols-5 gap-4 pb-2 border-b font-bold text-default-600 text-xs sm:text-sm">
+                      <div className="col-span-2">Product</div>
+                      <div>Price</div>
+                      <div>Quantity</div>
+                      <div className="text-right">Total Price</div>
                     </div>
-                    <div className="flex justify-between mt-1">
-                      <span>Quantity</span>
-                      <span>Total</span>
-                    </div>{" "}
-                    <div>
-                      <div className="hidden sm:grid grid-cols-5 gap-4 pb-2 border-b font-bold text-default-600 text-xs sm:text-sm">
-                        <div className="col-span-2">Product</div>
-                        <div>Price</div>
-                        <div>Quantity</div>
-                        <div className="text-right">Total Price</div>
+                    <div className="block sm:hidden min-w-[400px] pb-2 border-b font-bold text-default-600 text-xs">
+                      <div className="flex justify-between">
+                        <span>Product</span>
+                        <span>Price</span>
+                      </div>
+                      <div className="flex justify-between mt-1">
+                        <span>Quantity</span>
+                        <span>Total</span>
                       </div>
                     </div>
                     {items.map((item) => (
