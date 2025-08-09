@@ -44,7 +44,6 @@ After modifying the `.npmrc` file, you need to run `pnpm install` again to ensur
 ## Working Demo
 
 [Live Demo on Vercel](sneakers-collections.vercel.app)
-*(Replace with your actual deployed link)*
 
 ## Layout Approach
 
