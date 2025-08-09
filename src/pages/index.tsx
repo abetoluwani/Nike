@@ -11,6 +11,7 @@ import { useCart } from "@/context/cart";
 
 export default function IndexPage() {
   const { addItem } = useCart();
+
   return (
     <DefaultLayout>
       {/* Hero */}
@@ -34,10 +35,15 @@ export default function IndexPage() {
         </motion.div>
 
         <div className="flex gap-4">
-          <Button color="primary" radius="full" variant="shadow" as={Link} href="/products">
+          <Button
+            as={Link}
+            color="primary"
+            href="/products"
+            radius="full"
+            variant="shadow"
+          >
             Shop Now
           </Button>
-         
         </div>
       </section>
 
