@@ -1,4 +1,3 @@
- 
 import React, { useState } from "react";
 import { Button } from "@heroui/button";
 import {
@@ -39,7 +38,18 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 
   const handleAddToCart = () => {
     if (!product.inStock) return;
-
+    // Require size and color selection if available
+    if (
+      (product.variants.size &&
+        product.variants.size.length > 0 &&
+        !selectedSize) ||
+      (product.variants.color &&
+        product.variants.color.length > 0 &&
+        !selectedColor)
+    ) {
+      // Optionally show a message to user here
+      return;
+    }
     onAddToCart?.(product.id, {
       color: selectedColor,
       size: selectedSize,
@@ -270,7 +280,15 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             as={motion.button}
             className="w-full font-semibold"
             color={product.inStock ? "primary" : "default"}
-            isDisabled={!product.inStock}
+            isDisabled={
+              !product.inStock ||
+              (product.variants.size &&
+                product.variants.size.length > 0 &&
+                !selectedSize) ||
+              (product.variants.color &&
+                product.variants.color.length > 0 &&
+                !selectedColor)
+            }
             size="lg"
             startContent={
               product.inStock ? (

@@ -13,58 +13,12 @@ import { link as linkStyles } from "@heroui/theme";
 import clsx from "clsx";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 
+import { useCart } from "@/context/cart";
 import { ThemeSwitch } from "@/components/theme-switch";
 import { siteConfig } from "@/config/site";
-import { useCart } from "@/context/cart";
 
 export const Navbar = () => {
-  const { count, items, subtotal } = useCart();
-  const cartPreview = (
-    <div className="absolute right-0 mt-2 w-80 bg-white shadow-lg rounded-lg z-50 p-4 border">
-      <h3 className="font-bold mb-2">Cart</h3>
-      {items.length === 0 ? (
-        <div className="text-default-500 text-sm">Your cart is empty.</div>
-      ) : (
-        <div>
-          {items.slice(0, 3).map((item) => (
-            <div key={item.id} className="flex items-center gap-2 mb-2">
-              <img
-                alt={item.name}
-                className="w-10 h-10 object-cover rounded"
-                src={item.image}
-              />
-              <div className="flex-1">
-                <div className="font-medium text-sm">{item.name}</div>
-                <div className="text-xs text-default-500">
-                  Qty: {item.quantity}
-                </div>
-              </div>
-              <div className="text-xs font-bold">
-                ${item.price * item.quantity}
-              </div>
-            </div>
-          ))}
-          {items.length > 3 && (
-            <div className="text-xs text-default-400">
-              ...and {items.length - 3} more
-            </div>
-          )}
-          <div className="mt-2 text-right text-sm font-bold">
-            Subtotal: ${subtotal}
-          </div>
-        </div>
-      )}
-      <div className="mt-4 text-right">
-        <a
-          className="text-primary-600 hover:underline font-medium"
-          href="/cart"
-        >
-          Go to Cart
-        </a>
-      </div>
-    </div>
-  );
-  // search removed per request
+  const { count } = useCart();
 
   return (
     <HeroUINavbar isBordered maxWidth="xl" position="sticky">
@@ -75,8 +29,10 @@ export const Navbar = () => {
             color="foreground"
             href="/"
           >
-            <span className="text-xl font-extrabold tracking-tight">NIKE</span>
-            <span className="sr-only">Nike Kicks</span>
+            <span className="text-xl font-extrabold tracking-tight">
+              Snickers Collections
+            </span>
+            <span className="sr-only">All Kicks</span>
           </Link>
         </NavbarBrand>
         <div className="hidden lg:flex gap-4 justify-start ml-2">
@@ -122,7 +78,6 @@ export const Navbar = () => {
                 )}
               </div>
             </Button>
-            <div className="hidden group-hover:block">{cartPreview}</div>
           </div>
         </NavbarItem>
       </NavbarContent>
