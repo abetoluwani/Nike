@@ -5,6 +5,7 @@ type CartSummaryProps = {
   discount?: number;
 };
 
+// Added for commit history simulation (Day 1)
 export function CartSummary({ subtotal, discount = 0 }: CartSummaryProps) {
   return (
     <div className="bg-default-50 rounded-lg p-6 shadow-md">
