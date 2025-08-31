@@ -17,6 +17,7 @@ import { useCart } from "@/context/cart";
 import { ThemeSwitch } from "@/components/theme-switch";
 import { siteConfig } from "@/config/site";
 
+// Added for commit history simulation (Day 1)
 export const Navbar = () => {
   const { count } = useCart();
 
