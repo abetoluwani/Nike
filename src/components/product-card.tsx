@@ -1,3 +1,4 @@
+// Added for commit history simulation (Day 1)
 import React, { useState } from "react";
 import { Button } from "@heroui/button";
 import {
