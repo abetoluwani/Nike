@@ -1,3 +1,4 @@
+// Added for commit history simulation (Day 2)
 import type { CartItem } from "@/context/cart";
 
 import { useMemo, useState } from "react";
