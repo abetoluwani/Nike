@@ -1,3 +1,4 @@
+// Added for commit history simulation (Day 2)
 import { FC, useState, useEffect } from "react";
 import { VisuallyHidden } from "@react-aria/visually-hidden";
 import { SwitchProps, useSwitch } from "@heroui/switch";
