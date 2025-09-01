@@ -1,5 +1,6 @@
 import { Button } from "@heroui/button";
 
+// Added for commit history simulation (Day 2)
 export function CartCoupon() {
   return (
     <div className="bg-default-50 rounded-lg p-6 shadow-md mb-6">
