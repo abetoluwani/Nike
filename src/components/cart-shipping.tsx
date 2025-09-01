@@ -1,3 +1,4 @@
+// Added for commit history simulation (Day 2)
 import { useState } from "react";
 
 import { useCountries, useStates } from "./api-country-state";
