@@ -1,3 +1,4 @@
+// Added for commit history simulation (Day 3)
 import type { NavigateOptions } from "react-router-dom";
 
 import { HeroUIProvider } from "@heroui/system";
