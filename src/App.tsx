@@ -4,6 +4,7 @@ import IndexPage from "@/pages/index";
 import ProductsPage from "@/pages/products";
 import CartPage from "@/pages/cart";
 
+// Added for commit history simulation (Day 3)
 function App() {
   return (
     <Routes>
